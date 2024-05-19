@@ -1,0 +1,7 @@
+Các thành phần khác nhau trong hệ thống AUTOSAR CAN giao tiếp và liên kết với nhau như sau:
+
+CAN Driver và CAN Transceiver Driver ở lớp thấp nhất, giao tiếp trực tiếp với phần cứng như bộ điều khiển CAN và bộ chuyển đổi CAN. Chúng cung cấp các chức năng cơ bản để đọc/ghi thanh ghi, cấu hình phần cứng.
+CAN Interface (CanIf) sử dụng các dịch vụ của CAN Driver và CAN Transceiver Driver để giao tiếp với phần cứng CAN. CanIf cung cấp một giao diện thống nhất để các lớp trên có thể truyền/nhận dữ liệu qua CAN mà không cần biết chi tiết về phần cứng.
+CAN COM Stack bao gồm các lớp cao cấp như CAN Transport Protocol và PDU Router. Các lớp này sử dụng CanIf để gửi yêu cầu truyền dữ liệu, nhận dữ liệu và thông báo lỗi từ CanIf.
+CAN State Manager (CanSM) kiểm soát trạng thái của các kênh CAN bằng cách gọi các API của CanIf để khởi động, dừng, đánh thức bộ điều khiển CAN. CanSM cũng giao tiếp với CAN Network Management.
+CAN Network Management (CanNM) quản lý các nút ECU trên mạng CAN. Nó sử dụng các dịch vụ truyền/nhận của CanIf để trao đổi thông tin quản lý mạng với các nút khác. CanNM cũng giao tiếp với CanSM để quản lý trạng thái mạng.
